@@ -11,9 +11,6 @@ importers:
       '@modelcontextprotocol/sdk':
         specifier: ^1.10.0
         version: 1.10.0
-      mcp-demo:
-        specifier: 'link:'
-        version: 'link:'
       openai:
         specifier: ^4.95.0
         version: 4.95.0(zod@3.24.3)
