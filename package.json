@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "mcp demo: 一个练习mcp的地方",
   "type": "module",
-  "main": "index.ts",
   "scripts": {
-    "start": "node --loader ts-node/esm src/index.ts"
+    "build": "tsc",
+    "start": "node src/index.js",
+    "server-start": "node src/server/server-demo.js",
+    "client-start": "node src/client/client-demo.js",
+    "ai-test": "node src/server/deepseek.js"
   },
   "keywords": [],
   "author": "",
@@ -13,11 +16,13 @@
   "packageManager": "pnpm@10.8.0",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.10.0",
+    "mcp-demo": "link:",
+    "openai": "^4.95.0",
     "zod": "^3.24.3"
   },
   "devDependencies": {
     "@types/node": "^22.14.1",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.7.1",
     "typescript": "^5.8.3"
   }
 }
