@@ -1,0 +1,59 @@
+# EditorConfig 顶级配置文件
+root = true
+
+# 通用设置适用于所有文件
+[*]
+charset = utf-8                  # 文件编码
+end_of_line = lf                 # 换行符风格(LF)
+indent_style = space             # 使用空格缩进
+indent_size = 2                  # 缩进大小为2个空格
+trim_trailing_whitespace = true  # 去除行尾空格
+insert_final_newline = true      # 文件末尾保留空行
+
+# Markdown 文件设置
+[*.md]
+trim_trailing_whitespace = false # Markdown中行尾空格有意义
+
+# Python 文件设置
+[*.py]
+indent_size = 4                  # Python通常使用4空格缩进
+
+# Makefile 设置
+[Makefile]
+indent_style = tab               # Makefile必须使用tab
+
+# JSON 文件设置
+[*.json]
+indent_size = 2
+
+# YAML 文件设置
+[*.yaml, *.yml]
+indent_size = 2
+
+# Java 文件设置
+[*.java]
+indent_size = 4
+
+# C/C++ 文件设置
+[*.{c,cpp,h,hpp}]
+indent_size = 4
+
+# HTML 文件设置
+[*.html]
+indent_size = 2
+
+# CSS/SCSS/LESS 文件设置
+[*.{css,scss,less}]
+indent_size = 2
+
+# JavaScript/TypeScript 文件设置
+[*.{js,jsx,ts,tsx}]
+indent_size = 2
+
+# XML 文件设置
+[*.xml]
+indent_size = 2
+
+# Shell 脚本设置
+[*.sh]
+indent_size = 2
