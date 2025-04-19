@@ -1,0 +1,11 @@
+{
+  "servers": {
+    "my-mcp-server-demo": {
+      "type": "stdio",
+      "command": "pnpm",
+      "args": [
+        "server-start"
+      ]
+    }
+  }
+}
