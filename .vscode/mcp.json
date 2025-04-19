@@ -1,11 +1,13 @@
 {
   "servers": {
     "my-mcp-server-demo": {
-      "type": "stdio",
-      "command": "pnpm",
+      "command": "node",
       "args": [
-        "server-start"
-      ]
+        "E:/Project-H5/mcp-demo/src/server/server-demo.js"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      },
     }
   }
 }

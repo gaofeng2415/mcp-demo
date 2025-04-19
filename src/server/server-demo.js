@@ -11,8 +11,9 @@ const server = new McpServer({
 // 创建一个工具 计算两个数的和
 server.tool(
   'add',
-  async (res) => {
-    console.log('Server: Received add request with', res);
+  { a: z.number(), b: z.number() }, // 输入参数
+  async ({ a, b }) => {
+    console.log(`Server: Received add request with${a}, ${b}`);
     return {
       content: [{
         type: 'text',
@@ -54,8 +55,8 @@ try {
   //   console.error('Server: Connection error:', error);
   //   process.exit(1);
   // };
-  
- 
+
+
   console.log('Server: Connected and ready');
 } catch (error) {
   console.error('Server: Failed to start:', error);

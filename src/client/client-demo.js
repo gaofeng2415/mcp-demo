@@ -25,7 +25,7 @@ try {
 
   // 使用工具
   console.log('Client: Calling add tool...');
-  const result = await client.callTool('add', { a: 5, b: 3 });
+  const result = await client.callTool({ name: 'add', arguments: { a: 5, b: 3 }});
   console.log('Client: Tool result:', result);
 
   // 获取所有资源
