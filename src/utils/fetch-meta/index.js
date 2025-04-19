@@ -1,5 +1,3 @@
-import { get } from "http";
-
 export default class HttpClient {
   constructor(baseUrl = '', defaultOptions = {}) {
     this.baseUrl = baseUrl;
@@ -35,7 +33,7 @@ export default class HttpClient {
   }
 
   async request(url, method, data = {}, customOptions = {}) {
-    const fullUrl = `${this.baseUrl}${url}`;
+    const fullUrl = url.startsWith('http') ? url : `${this.baseUrl}${url}`;
     const options = {
       ...this.defaultOptions,
       method,

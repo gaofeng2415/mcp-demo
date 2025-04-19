@@ -1,13 +1,15 @@
-model:
+# agent 相关配置
+'qwen2.5-72b-instruct':
+  yamlType: 'agent'
   id: 'mo-c73knlqigltjgtjq'                 # 模型 ID
   name: 'qwen2.5-72b-instruct'              # 模型名
   type: 'llm'                               # 模型类型
   apiId: 'ak-da3v7byxqzgvdoio'              # API ID
   apiName: 'gaofeng-demo-test'              # API 名称
   apiSecret: 'sk-4ftuxwzb4y6pigxv'          # API 密钥
-enableTools: true                           # 是否支持工具调用
-url: 'https://cloud.infini-ai.com/maas/v1/chat/completions'
-methods: 'post'                             # url 请求方式
-requestHeaders:
-  Authorization: 'Bearer sk-4ftuxwzb4y6pigxv'
-  'Content-Type': 'application/json'
+  enableTools: true                         # 是否支持工具调用
+  url: 'https://cloud.infini-ai.com/maas/v1/chat/completions'
+  methods: 'post'                           # url 请求方式
+  requestHeaders:
+    Authorization: 'Bearer sk-4ftuxwzb4y6pigxv'
+    'Content-Type': 'application/json'

@@ -1,0 +1,8 @@
+# figma 相关配置
+figma:
+  yamlType: 'ui'
+  url: 'https://api.figma.com'
+  tokenName: 'gaofeng-mcp-demo'
+  token: 'figd_T8MYUjh8V59BnnU8ZeFe2tVxD4SabqF3z6fP5dn9'
+  requestHeaders:
+    'X-Figma-Token': 'figd_T8MYUjh8V59BnnU8ZeFe2tVxD4SabqF3z6fP5dn9'

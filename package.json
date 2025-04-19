@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "node src/index.js yaml=qwen2.5-72b-instruct",
+    "start": "node src/index.js model=qwen2.5-72b-instruct ui=figma",
     "server-start": "node src/server/server-demo.js",
     "client-start": "node src/client/client-demo.js",
     "ai-test": "node src/server/deepseek.js",
