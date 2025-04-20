@@ -4,7 +4,7 @@ import parseUtils from './ui-parse.js'
 
 const tools = {
   add: {
-    enable: true, // 是否启用
+    enable: false, // 是否启用
     name: 'add',
     description: '计算两个数的和',
     paramsSchema: { a: z.number(), b: z.number(), }, // 输入参数
@@ -16,6 +16,20 @@ const tools = {
           text: `The sum of ${a} and ${b} is ${a + b}.`,
         }],
       };
+    },
+    parameters: {
+      type: 'string',
+      properties: {
+        a: {
+          type: 'number',
+          description: '第一个数字',
+        },
+        b: {
+          type: 'number',
+          description: '第二个数字',
+        },
+      },
+      required: ['a', 'b'],
     }
   },
   getFigmaFileData: {
@@ -29,6 +43,20 @@ const tools = {
       console.log('figma res', res);
       // callback 返回必须是array
       return { content: [{ type: 'text', text: JSON.stringify(res), }] }
+    },
+    parameters: {
+      type: 'string',
+      properties: {
+        fileId: {
+          type: 'string',
+          description: 'Figma文件ID',
+        },
+        nodeIds: {
+          type: 'string',
+          description: '节点ID，多个用逗号分隔',
+        },
+      },
+      required: ['fileId'],
     }
   },
   parseToDom: {
@@ -42,6 +70,16 @@ const tools = {
       console.log('parse 的结果：', res.join(''));
       // callback 返回必须是array
       return { content: [{ type: 'text', text: res.join(''), }] }
+    },
+    parameters: {
+      type: 'string',
+      properties: {
+        jsonString: {
+          type: 'string',
+          description: 'figma文件数据',
+        },
+      },
+      required: ['jsonString'],
     }
   }
 }
