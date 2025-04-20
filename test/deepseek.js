@@ -1,8 +1,8 @@
 import OpenAI from "openai";
 // import { generateText } from 'ai'
 
-const baseURL = 'https://api.deepseek.com';
-const apiKey = 'sk-ff412d5bdd9f4e1a94bb5c9839b494cd';
+const baseURL = 'https://cloud.infini-ai.com/maas';
+const apiKey = 'sk-4ftuxwzb4y6pigxv';
 
 const openai = new OpenAI({
   baseURL,
@@ -12,7 +12,7 @@ const openai = new OpenAI({
 
 openai.chat.completions.create({
   messages: [{ role: "system", content: "Hello!" }],
-  model: 'deepseek-chat',
+  model: 'qwen2.5-72b-instruct',
 }).then((res) => {
   console.log(res)
 })

@@ -1,11 +1,14 @@
 // dom 工厂
 class DomFactory {
-  createDom(tagName) {
+  static createDom(tagName) {
     const dom = new Dom(tagName);
     return dom;
   }
-  createFragment() {
+  static createFragment() {
     return document.createDocumentFragment();
+  }
+  static createIndent(indentNum = 0) {
+    return '  '.repeat(indentNum);
   }
 }
 
@@ -20,6 +23,7 @@ class Dom {
     // this.events = {};
     this.dataset = dataset || {};
     this.parentNode = parentNode || null;
+    this.node = null; // DOM节点
   }
   // attributes getter setter
   setAttributes(attributes = {}) {
@@ -39,7 +43,11 @@ class Dom {
   }
   // children getter setter
   appendChild(child) {
-    this.children.push(child);
+    if (Array.isArray(child)) {
+      this.children = this.children.concat(child);
+    } else {
+      this.children.push(child);
+    }
     return this;
   }
   removeChild(child) {
@@ -73,5 +81,37 @@ class Dom {
   }
   getParentNode() {
     return this.parentNode;
+  }
+  // attribute to string
+  attributesToString() {
+    return Object.entries(this.attributes).map(([key, value]) => `${key}="${value}"`).join(' ');
+  }
+  // dataset to string
+  datasetToString() {
+    return Object.entries(this.dataset).map(([key, value]) => `data-${key}="${value}"`).join(' ');
+  }
+  // css to string
+  cssToString() {
+    return this?.css?.toString?.()?.filter(Boolean).join(' ') || '';
+  }
+  /**
+   * @description: 获取DOM string
+   * @returns {string} DOM string
+   */
+  toString(indentStart = 0) {
+    const indent = DomFactory.createIndent(indentStart);
+    const startList = [this.attributesToString(), this.datasetToString(), this.cssToString()].filter(Boolean).join(' ');
+    const tagStart = `${indent}<${this.tagName} ${startList}>\n`;
+    const tagEnd = `${indent}</${this.tagName}>\n`;
+    const ans = [tagStart]
+    this.textContent && ans.push(`${DomFactory.createIndent(indentStart + 1)}${this.textContent}\n`);
+    if (this.children?.length > 0) {
+      this.children.forEach((child) => {
+        const childString = child.toString(indentStart + 1);
+        ans.push(childString);
+      })
+    }
+    ans.push(tagEnd);
+    return ans.join('');
   }
 }

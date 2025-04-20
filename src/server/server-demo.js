@@ -1,6 +1,6 @@
 import { McpServer, ResourceTemplate } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import { z } from 'zod';
+import tools from './utils/server-tools.js';
 
 // 创建一个服务
 const server = new McpServer({
@@ -8,20 +8,16 @@ const server = new McpServer({
     version: '0.0.1',
 });
 
-// 创建一个工具 计算两个数的和
-server.tool(
-  'add',
-  { a: z.number(), b: z.number() }, // 输入参数
-  async ({ a, b }) => {
-    console.log(`Server: Received add request with${a}, ${b}`);
-    return {
-      content: [{
-        type: 'text',
-        text: `The sum of ${a} and ${b} is ${a + b}.`,
-      }],
-    };
-  }
-);
+// 注册 server tools
+Object.values(tools).forEach((tool) => {
+  if (!tool.enable) return; // 如果工具未启用，则跳过注册
+  server.tool(
+    tool.name,
+    tool.description,
+    tool.paramsSchema,
+    tool.callback
+  )
+})
 
 // 创建一个资源
 server.resource(

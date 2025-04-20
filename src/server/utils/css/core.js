@@ -1,7 +1,5 @@
 // css 工厂
 class CssFactory {
-  constructor(/* CssTemplate TODO... */) {
-  }
   /**
    * @description rgba转hex
    * @param {object<{ r: number, g: number, b: number, a?: number }>} rgba对象
@@ -16,7 +14,7 @@ class CssFactory {
    * @description 设置css对象
    * @param {object} dom
    */
-  setCssObject(dom) {
+  static createCss(dom) {
     dom.css = new Css();
     return dom.css;
   }
@@ -53,6 +51,17 @@ class Css {
   }
   getStyles() {
     return this.style;
+  }
+  /**
+   * @description 获取css string
+   * @todo 实现class string
+   */
+  toString() {
+    const cssString = Object.entries(this.style)
+      .map(([key, value]) => `${key}: ${value};`)
+      .join(' ');
+    const classString = this.classList.length > 0 ? `class="${this.classList.join(' ')}"` : '';
+    return [cssString ? `style="${cssString}"` : '', classString];
   }
 }
 

@@ -24,9 +24,15 @@ try {
   console.log('Client: Available tools:', tools);
 
   // 使用工具
-  console.log('Client: Calling add tool...');
-  const result = await client.callTool({ name: 'add', arguments: { a: 5, b: 3 }});
-  console.log('Client: Tool result:', result);
+  // console.log('Client: Calling add tool...');
+  // const result = await client.callTool({ name: 'add', arguments: { a: 5, b: 3 }});
+  console.log('Client: Calling getFigmaFileData tool...');
+  let fetchResult = await client.callTool({ name: 'getFigmaFileData', arguments: { fileId: 'GYGDEukMSmeZcWnKzxx2m8', nodeIds: '3319-2' }});
+  fetchResult = fetchResult?.content[0].text
+  // console.log('Client: getFigmaFileData result:', fetchResult);
+  const parseResult = await client.callTool({ name: 'parseToDom', arguments: { jsonString: fetchResult }});
+  console.log('Client: parseToDom result:', parseResult?.content[0].text);
+
 
   // 获取所有资源
   console.log('Client: Listing resources...');

@@ -9,7 +9,8 @@
     "server-start": "node src/server/server-demo.js",
     "client-start": "node src/client/client-demo.js",
     "ai-test": "node src/server/deepseek.js",
-    "api-fetch": "node src/utils/fetch-test.js"
+    "api-fetch": "node test/fetch-test.js",
+    "parse-test": "node test/parse-test.js"
   },
   "keywords": [],
   "author": "",
