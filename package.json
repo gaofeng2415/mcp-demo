@@ -8,7 +8,7 @@
     "start": "node src/index.js model=qwen2.5-72b-instruct ui=figma",
     "server-start": "node src/server/server-demo.js",
     "client-start": "node src/client/client-demo.js",
-    "ai-test": "node src/server/deepseek.js",
+    "ai-test": "node test/deepseek.js",
     "api-fetch": "node test/fetch-test.js",
     "parse-test": "node test/parse-test.js"
   },

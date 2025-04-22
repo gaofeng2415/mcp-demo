@@ -1,4 +1,5 @@
 import * as fs from 'node:fs/promises';
+import { fileURLToPath } from 'url';
 import path from 'path';
 import { parse } from 'yaml';
 
@@ -15,7 +16,9 @@ export const parseYaml = (yamlString) => parse(yamlString);
  * @returns {object} 解析后的对象
  */
 export async function readFileToYaml(filePath = './local.yaml') {
-  filePath = path.resolve(filePath)
+  const __dirname = path.dirname(fileURLToPath(import.meta.url));
+  filePath = path.join(__dirname, '../..', filePath)
+  console.log(filePath);
   const fileContent = await fs.readFile(filePath, 'utf-8');
   return parseYaml(fileContent)
 }

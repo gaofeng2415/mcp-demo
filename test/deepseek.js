@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 // import { generateText } from 'ai'
 
-const baseURL = 'https://cloud.infini-ai.com/maas';
+const baseURL = 'https://cloud.infini-ai.com/maas/v1';
 const apiKey = 'sk-4ftuxwzb4y6pigxv';
 
 const openai = new OpenAI({
@@ -10,12 +10,12 @@ const openai = new OpenAI({
   dangerouslyAllowBrowser: true,
 });
 
-openai.chat.completions.create({
+const completions = await openai.chat.completions.create({
   messages: [{ role: "system", content: "Hello!" }],
   model: 'qwen2.5-72b-instruct',
-}).then((res) => {
-  console.log(res)
 })
+console.log(completions);
+
 
 // const deepseekModel = createDeepSeek({
 //   baseURL,

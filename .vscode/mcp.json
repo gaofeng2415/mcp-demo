@@ -3,7 +3,8 @@
     "my-mcp-server-demo": {
       "command": "node",
       "args": [
-        "E:/Project-H5/mcp-demo/src/server/server-demo.js"
+        // server服务文件的绝对路径
+        "${workspaceFolder}/src/server/server-demo.js"
       ],
       "env": {
         "NODE_ENV": "development"
