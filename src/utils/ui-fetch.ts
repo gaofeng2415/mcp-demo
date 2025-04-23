@@ -1,5 +1,5 @@
-import HttpClient from './fetch-meta/index.js';
-import { getConfig } from './yaml.js';
+import HttpClient from './fetch-meta/index.ts';
+import { getConfig } from './yaml.ts';
 
 const uiConfig = await getConfig('ui') // 获取指定yaml类型的配置
 
@@ -20,7 +20,7 @@ const ErrorCodes = [
   CodeStatus.INTER_SERVER_ERROR,
 ]
 
-const uiHttp = new HttpClient(uiConfig.url, { headers: { ...(uiConfig.requestHeaders || {}) }})
+const uiHttp = new HttpClient(uiConfig?.url, { headers: { ...(uiConfig?.requestHeaders || {}) }})
 
 // 请求拦截器
 uiHttp.useRequestInterceptor(async (config, data) => {

@@ -1,5 +1,5 @@
-import DomFactory from './html/core.js'
-import CssFactory from './css/core.js'
+import DomFactory, { Dom } from './html/core.ts'
+import CssFactory from './css/core.ts'
 
 // padding 键名
 const paddingDirectList = ['paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft']
@@ -10,11 +10,12 @@ const marginDirectList = ['marginTop', 'marginRight', 'marginBottom', 'marginLef
 const widthKey = 'width'
 const heightKey = 'height'
 const backgroundColorKey = 'backgroundColor'
+
 /**
  * @description 解析节点数据
- * @param {object} nodeJson 节点描述的json
+ * @param {Record<string, any>} nodeJson 节点描述的json
  */
-function parseDom(nodeJson) {
+function parseDom(nodeJson: Record<string, any>): Dom {
   const dom = DomFactory.createDom('div');
   const css = CssFactory.createCss(dom);
    // 设置文本
@@ -43,9 +44,9 @@ function parseDom(nodeJson) {
     }
   })
   // 渲染并链接子节点
-  if (nodeJson.children) {
-    const domChildren = nodeJson.children?.map((child) => {
-      const domChild = parseDom(child)
+  if (nodeJson.children && Array.isArray(nodeJson.children)) {
+    const domChildren = nodeJson.children?.map((child: Record<string, any>) => {
+      const domChild = parseDom(child);
       domChild.setParentNode(dom);
       return domChild;
     })
@@ -59,13 +60,13 @@ function parseDom(nodeJson) {
  * @param {object} json 节点描述的json
  * @return {HTMLElement.Node || null} 节点数据
  */
-function parse(json) {
+function parse(json: Record<string, any>): string[] {
   let nodeJsonList = null
   if (!json.nodes) {
     nodeJsonList = [json]
   } else {
     // 解析节点数据
-    nodeJsonList = Object.values(json.nodes || {}).map(_ => _.document).filter(Boolean)
+    nodeJsonList = Object.values(json.nodes || {}).map((_: any) => _.document).filter(Boolean)
   }
   return nodeJsonList.map((nodeJson) => parseDom(nodeJson).toString())
 }
