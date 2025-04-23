@@ -171,3 +171,4 @@ yarn-error.log*
 
 # 要保留的文件
 !.vscode/mcp.json
+!.vscode/extensions.json

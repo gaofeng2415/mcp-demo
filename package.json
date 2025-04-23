@@ -10,7 +10,8 @@
     "client-start": "tsx src/client/client-demo.ts",
     "ai-test": "tsx test/deepseek.ts",
     "api-fetch": "tsx test/fetch-test.ts",
-    "parse-test": "tsx test/parse-test.ts"
+    "parse-test": "tsx test/parse-test.ts",
+    "client-dev": "vite"
   },
   "keywords": [],
   "author": "",
@@ -18,16 +19,26 @@
   "packageManager": "pnpm@10.8.0",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.10.0",
+    "@tailwindcss/postcss": "^4.1.4",
+    "highlight.js": "^11.11.1",
+    "naive-ui": "^2.41.0",
     "openai": "^4.95.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.4",
+    "vue": "^3.5.13",
     "yaml": "^2.7.1",
     "zod": "^3.24.3"
   },
   "devDependencies": {
     "@types/node": "^22.14.1",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "@vue/tsconfig": "^0.7.0",
     "eslint": "^9.24.0",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
     "tsx": "^4.7.1",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vite": "^6.3.2",
+    "vue-tsc": "^2.2.10"
   }
 }
