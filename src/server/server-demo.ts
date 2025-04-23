@@ -8,16 +8,31 @@ const server = new McpServer({
     version: '0.0.1',
 });
 
-// 注册 server tools
 Object.values(tools).forEach((tool) => {
   if (!tool.enable) return; // 如果工具未启用，则跳过注册
+
+  // 确保 callback 返回值符合类型要求
+  const normalizedCallback = async (args: any, extra: any): Promise<any> => {
+    const result = await tool.callback(args, extra);
+    // 检查 content 是否符合要求
+    if (result.content) {
+      // result.content = result.content.map((item: any) => {
+        // if (item.type === 'resource' && !item.resource) {
+        //   throw new Error('Missing "resource" property for type "resource"');
+        // }
+      //   return item;
+      // });
+    }
+    return result;
+  };
+
   server.tool(
     tool.name,
     tool.description,
     tool.paramsSchema,
-    tool.callback
-  )
-})
+    normalizedCallback
+  );
+});
 
 // 创建一个资源
 server.resource(

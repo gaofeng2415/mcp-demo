@@ -28,10 +28,9 @@ try {
   // const result = await client.callTool({ name: 'add', arguments: { a: 5, b: 3 }});
   console.log('Client: Calling getFigmaFileData tool...');
   let fetchResult = await client.callTool({ name: 'getFigmaFileData', arguments: { fileId: 'GYGDEukMSmeZcWnKzxx2m8', nodeIds: '3319-2' }});
-  fetchResult = fetchResult?.content[0].text
-  // console.log('Client: getFigmaFileData result:', fetchResult);
-  const parseResult = await client.callTool({ name: 'parseToDom', arguments: { jsonString: fetchResult }});
-  console.log('Client: parseToDom result:', parseResult?.content[0].text);
+  // console.log('Client: getFigmaFileData result:', (fetchResult?.content as { text: string }[])?.[0]?.text);
+  const parseResult = await client.callTool({ name: 'parseToDom', arguments: { jsonString: (fetchResult?.content as { text: string }[])?.[0]?.text }});
+  console.log('Client: parseToDom result:', (parseResult?.content as { text: string }[])[0].text);
 
 
   // 获取所有资源

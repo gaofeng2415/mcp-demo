@@ -8,7 +8,7 @@ import { parse } from 'yaml';
  * @param {string} yamlString 未解析的yaml字符串文本
  * @returns {object} 解析后的对象
  */
-export const parseYaml = (yamlString) => parse(yamlString);
+export const parseYaml = (yamlString: string): Record<string, any> => parse(yamlString);
 
 /**
  * @description 从文件中读取yaml并解析
@@ -18,7 +18,6 @@ export const parseYaml = (yamlString) => parse(yamlString);
 export async function readFileToYaml(filePath = './local.yaml') {
   const __dirname = path.dirname(fileURLToPath(import.meta.url));
   filePath = path.join(__dirname, '../..', filePath)
-  console.log(filePath);
   const fileContent = await fs.readFile(filePath, 'utf-8');
   return parseYaml(fileContent)
 }
@@ -32,7 +31,7 @@ export async function syncYamlToLocal() {
   //   { configType: 'ui', path: 'figma' },
   // ]
   const args = [...process.argv].slice(2)
-  if (!args.length === 0) return
+  if (args.length === 0) return
   const fileNameList = args.map((arg) => {
     const [configType, fileName] = arg.split('=')
     return { configType, path: fileName }
@@ -49,7 +48,6 @@ export async function syncYamlToLocal() {
 
 /**
  * @description 读取yaml文件并解析为对象，存储到全局变量config中
- * @param {string} filePath 文件路径,仅支持项目绝对路径，.e.g ./src/utils/parse-yaml.js
  */
 export async function loadYamlToGlobal() {
   const yaml = await readFileToYaml()
@@ -62,7 +60,7 @@ export async function loadYamlToGlobal() {
  * @param {string} yamlType yaml 类型 （agent、ui）
  * @returns {object} yaml配置对象
  */
-export async function getConfig(yamlType) {
+export async function getConfig(yamlType: string): Promise<Record<string, any> | null> {
   // 加载配置文件到全局变量
   if (!global.config) { // 避免多次加载yaml
     await loadYamlToGlobal();

@@ -4,13 +4,13 @@
   "description": "mcp demo: 一个练习mcp的地方",
   "type": "module",
   "scripts": {
-    "build": "tsc",
-    "start": "node src/index.js model=qwen2.5-72b-instruct ui=figma",
-    "server-start": "node src/server/server-demo.js",
-    "client-start": "node src/client/client-demo.js",
-    "ai-test": "node test/deepseek.js",
-    "api-fetch": "node test/fetch-test.js",
-    "parse-test": "node test/parse-test.js"
+    "build": "tsx",
+    "start": "tsx src/index.ts -- model=qwen2.5-72b-instruct ui=figma",
+    "server-start": "tsx src/server/server-demo.ts",
+    "client-start": "tsx src/client/client-demo.ts",
+    "ai-test": "tsx test/deepseek.ts",
+    "api-fetch": "tsx test/fetch-test.ts",
+    "parse-test": "tsx test/parse-test.ts"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +25,8 @@
   "devDependencies": {
     "@types/node": "^22.14.1",
     "eslint": "^9.24.0",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
     "tsx": "^4.7.1",
     "typescript": "^5.8.3"
   }
