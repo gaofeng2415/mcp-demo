@@ -61,7 +61,7 @@ function parseDom(nodeJson: Record<string, any>): Dom {
  * @return {HTMLElement.Node || null} 节点数据
  */
 function parse(json: Record<string, any>): string[] {
-  let nodeJsonList = null
+  let nodeJsonList: Record<string, any>[]|null = null
   if (!json.nodes) {
     nodeJsonList = [json]
   } else {
