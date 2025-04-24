@@ -1,6 +1,7 @@
 {
-  "files": [],
   "references": [
     { "path": "./tsconfig/mcp.json" },
-  ]
+    { "path": "./tsconfig/client.json" },
+  ],
+  "files": []
 }
