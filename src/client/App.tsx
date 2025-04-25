@@ -1,6 +1,7 @@
 import { ref, defineComponent } from 'vue';
-import { NButton, NCode, NConfigProvider } from 'naive-ui';
+import { NButton, NConfigProvider } from 'naive-ui';
 import hljs from 'highlight.js';
+import Code from '@/client/components/code';
 
 export default defineComponent({
   name: 'App',
@@ -13,7 +14,7 @@ export default defineComponent({
         <div class="page-container p-[20px]">
           <NButton type="primary">{ test.value }</NButton>
           <div>下面是代码块演示</div>
-          <NCode code={codeText.value} language={codeLanguage.value} />
+          <Code code={codeText.value} language={codeLanguage.value} />
         </div>
       </NConfigProvider>
     )
