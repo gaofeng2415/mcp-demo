@@ -1,0 +1,16 @@
+@use '@/client/styles/variables.scss' as variables;
+
+.code-container {
+  font-size: variables.$fontSize;
+  border-radius: 12px;
+  color: variables.$color;
+  overflow: hidden;
+  background-color: #fafafa;
+    .code-header {
+    background-color: #f5f5f5;
+    padding: 6px 14px;
+  }
+  .code-body {
+    padding: 9px 14px;
+  }
+}

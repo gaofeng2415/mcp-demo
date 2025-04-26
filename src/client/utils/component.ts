@@ -2,6 +2,7 @@ import type { App, Plugin } from 'vue';
 
 type SFCWithInstall<T> = T & Plugin
 
+// 封装 install 方法
 export const withInstall = <T, U extends Record<string, any>>(
   main: T,
   extra?: U

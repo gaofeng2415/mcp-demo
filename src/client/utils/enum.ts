@@ -1,2 +1,25 @@
-// import hljs from "highlight.js";
-// console.log(hljs?.listLanguages());
+// 映射语言到文件扩展名
+export const languageToExtension = {
+  javascript: 'js',
+  typescript: 'ts',
+  python: 'py',
+  java: 'java',
+  cpp: 'cpp',
+  c: 'c',
+  html: 'html',
+  css: 'css',
+  xml: 'xml',
+  json: 'json',
+  bash: 'sh',
+  shell: 'sh',
+  sql: 'sql',
+  ruby: 'rb',
+  php: 'php',
+  go: 'go',
+  rust: 'rs',
+  kotlin: 'kt',
+  swift: 'swift',
+  markdown: 'md',
+  yaml: 'yaml',
+  // 可以继续添加更多映射...
+};

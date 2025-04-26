@@ -17,9 +17,8 @@ export default defineConfig({
   },
   css: {
     preprocessorOptions: {
-      less: {
-        additionalData: '@import "@/client/styles/variables.less";', // 全局Less变量文件
-        javascriptEnabled: true
+      sass: {
+        additionalData: '@import "@/client/styles/variables.scss"; @import "@/client/styles/base.scss";', // 全局sass变量文件
       }
     }
   },

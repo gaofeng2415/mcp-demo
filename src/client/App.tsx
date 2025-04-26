@@ -1,6 +1,7 @@
 import { ref, defineComponent } from 'vue';
-import { NButton, NConfigProvider } from 'naive-ui';
+import { NButton, NConfigProvider, NMessageProvider, NLoadingBarProvider, NNotificationProvider, NModalProvider, NDialogProvider } from 'naive-ui';
 import hljs from 'highlight.js';
+import Register from './components/register';
 import Code from '@/client/components/code';
 
 export default defineComponent({
@@ -11,11 +12,22 @@ export default defineComponent({
     const codeLanguage = ref('cpp')
     return () => (
       <NConfigProvider hljs={hljs}>
-        <div class="page-container p-[20px]">
-          <NButton type="primary">{ test.value }</NButton>
-          <div>下面是代码块演示</div>
-          <Code code={codeText.value} language={codeLanguage.value} />
-        </div>
+        <NMessageProvider>
+          <NLoadingBarProvider>
+            <NNotificationProvider>
+              <NModalProvider>
+                <NDialogProvider>
+                  <Register />
+                  <div class="page-container p-[20px]">
+                    <NButton type="primary">{ test.value }</NButton>
+                    <div>下面是代码块演示</div>
+                    <Code code={codeText.value} language={codeLanguage.value} />
+                  </div>
+                </NDialogProvider>
+              </NModalProvider>
+            </NNotificationProvider>
+          </NLoadingBarProvider>
+        </NMessageProvider>
       </NConfigProvider>
     )
   }
