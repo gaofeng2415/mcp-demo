@@ -1,4 +1,5 @@
 import type { App, Plugin } from 'vue';
+import type { ComponentPublicInstance, SetupContext } from 'vue';
 
 type SFCWithInstall<T> = T & Plugin
 
@@ -19,3 +20,10 @@ export const withInstall = <T, U extends Record<string, any>>(
   }
   return main as SFCWithInstall<T> & U
 }
+
+export type InferExposed<T> = T extends {
+  setup: (
+    props: any,
+    ctx: SetupContext<infer expose>
+  ) => any
+} ? expose : never;

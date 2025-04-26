@@ -22,8 +22,10 @@
     "@tailwindcss/postcss": "^4.1.4",
     "@vicons/ionicons5": "^0.13.0",
     "@vicons/utils": "^0.1.4",
+    "axios": "^1.9.0",
     "dompurify": "^3.2.5",
     "highlight.js": "^11.11.1",
+    "lodash": "^4.17.21",
     "marked": "^15.0.11",
     "naive-ui": "^2.41.0",
     "openai": "^4.95.0",
@@ -34,6 +36,7 @@
     "zod": "^3.24.3"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.16",
     "@types/node": "^22.14.1",
     "@vitejs/plugin-vue": "^5.2.3",
     "@vitejs/plugin-vue-jsx": "^4.1.2",

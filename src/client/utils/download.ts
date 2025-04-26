@@ -33,6 +33,15 @@ export function getCodeExtension(code: string) {
 }
 
 /**
+ * @description 根据语言获取文件后缀名
+ * @param language 语言
+ * @returns 文件格式名
+ */
+export function getExtensionByLanguage(language: string) {
+  return languageToExtension[language as keyof typeof languageToExtension] || language || 'txt';
+}
+
+/**
  * @description 复制到剪贴板
  * @param text 要复制的文本
  */

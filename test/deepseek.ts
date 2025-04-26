@@ -11,23 +11,7 @@ const openai = new OpenAI({
 });
 
 const completions = await openai.chat.completions.create({
-  messages: [{ role: "system", content: "Hello!" }],
+  messages: [{ role: "system", content: "你好，能帮忙用ts写一个hello world嘛?返回数据格式用markdown语法" }],
   model: 'qwen2.5-72b-instruct',
 })
 console.log(completions);
-
-
-// const deepseekModel = createDeepSeek({
-//   baseURL,
-//   headers: {
-//     'Authorization': `Bearer ${apiKey}`,
-//     'Content-Type': 'application/json',
-//   },
-//   apiKey,
-// });
-
-// const { text } = await generateText({
-//   model: deepseekModel,
-//   prompt: 'Hello, how are you?',
-//   maxTokens: 100,
-// });

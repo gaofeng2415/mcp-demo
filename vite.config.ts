@@ -13,7 +13,14 @@ export default defineConfig({
   },
   server: {
     host: '0.0.0.0',
-    port: 8080
+    port: 8080,
+    proxy: {
+      '/maas/v1': {
+        target: import.meta.env.VITE_OPENAI_AGENT_NAME,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/maas\/v1/, '')
+      }
+    }
   },
   css: {
     preprocessorOptions: {
