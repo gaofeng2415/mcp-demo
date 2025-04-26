@@ -1,15 +1,12 @@
 import { ref, defineComponent } from 'vue';
-import { NButton, NConfigProvider, NMessageProvider, NLoadingBarProvider, NNotificationProvider, NModalProvider, NDialogProvider } from 'naive-ui';
+import { NConfigProvider, NMessageProvider, NLoadingBarProvider, NNotificationProvider, NModalProvider, NDialogProvider } from 'naive-ui';
 import hljs from 'highlight.js';
 import Register from './components/register';
-import Code from '@/client/components/code';
+import Index from './pages/index';
 
 export default defineComponent({
   name: 'App',
   setup() {
-    const test = ref('123')
-    const codeText = ref(`int main () {\n  std::cout << "Hello Naive UI";\n  return 0;\n}`)
-    const codeLanguage = ref('cpp')
     return () => (
       <NConfigProvider hljs={hljs}>
         <NMessageProvider>
@@ -19,9 +16,7 @@ export default defineComponent({
                 <NDialogProvider>
                   <Register />
                   <div class="page-container p-[20px]">
-                    <NButton type="primary">{ test.value }</NButton>
-                    <div>下面是代码块演示</div>
-                    <Code code={codeText.value} language={codeLanguage.value} />
+                    <Index />
                   </div>
                 </NDialogProvider>
               </NModalProvider>
