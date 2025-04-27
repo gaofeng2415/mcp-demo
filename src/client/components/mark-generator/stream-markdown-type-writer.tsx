@@ -8,15 +8,12 @@ import { downloadTextAsFile, getExtensionByLanguage, copyToClipboard } from '@/c
 import './stream-markdown-type-writer.scss';
 
 const renderer = new marked.Renderer();
-const supportedLanguages = hljs.listLanguages();
-
-
-
 let dataId = 0
 const codeDict: Record<string, string> = {}
 const languageToExtension: Record<string, string> = {}
+
 renderer.code = ({ lang, raw, text, type }) => {
-  if (supportedLanguages.includes(lang ?? '')) {
+  if (hljs.getLanguage(lang ?? '')) {
     const node = createApp(Code, { code: text, language: lang, dataId });
     codeDict[dataId] = text
     languageToExtension[dataId] = lang ?? ''

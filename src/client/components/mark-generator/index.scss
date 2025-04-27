@@ -1,0 +1,15 @@
+$questionMargin: 48px;
+.question-container {
+  font-size: 16px;
+  line-height: 28px;
+  color: #262626;
+  padding: 8px 20px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background-color: #eff6ff;
+  border-radius: 14px;
+  max-width: calc(100% - $questionMargin);
+  position: relative;
+  margin-left: $questionMargin;
+  margin-bottom: 16px;
+}

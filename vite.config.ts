@@ -1,7 +1,9 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import path from 'path'
+
+const env = loadEnv('development', process.cwd())
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -16,7 +18,7 @@ export default defineConfig({
     port: 8080,
     proxy: {
       '/maas/v1': {
-        target: import.meta.env.VITE_OPENAI_AGENT_NAME,
+        target: env.VITE_OPENAI_BASE_URL,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/maas\/v1/, '')
       }

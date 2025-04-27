@@ -1,19 +1,26 @@
 import { defineComponent, ref } from 'vue';
-import StreamMarkdownTypewriter from './stream-markdown-type-writer';
+import StreamMarkdownTypeWriter from './stream-markdown-type-writer';
+import './index.scss';
 
+export enum ContentType {
+  Question = 'question',
+  Answer = 'answer'
+}
 
 export default defineComponent({
   name: 'MarkGenerator',
   setup(props, { expose }) {
-    const markContent = ref('')
-    const updateMdContent = (content: string) => {
-      markContent.value = content
+    const contentList = ref<{ type: ContentType, content: string }[]>([])
+    const updateContent = (type: ContentType.Question | ContentType.Answer, content: string) => {
+      contentList.value.push({ type, content })
     }
-    expose({ updateMdContent })
+    expose({ updateContent })
     return () => (
-      <div class="markdown-typewriter-container">
-        <StreamMarkdownTypewriter content={markContent.value} speed={20} />
-      </div>
+        contentList.value.map((item, index) => (
+            item.type === ContentType.Question
+              ? <div class="question-container" key={index}>{ item.content }</div>
+              : <StreamMarkdownTypeWriter content={item.content} speed={20} key={index} />
+        ))
     );
   }
 });

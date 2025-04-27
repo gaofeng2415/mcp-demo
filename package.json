@@ -11,7 +11,7 @@
     "ai-test": "tsx test/deepseek.ts",
     "api-fetch": "tsx test/fetch-test.ts",
     "parse-test": "tsx test/parse-test.ts",
-    "client-dev": "vite"
+    "client-dev": "vite --mode development"
   },
   "keywords": [],
   "author": "",
