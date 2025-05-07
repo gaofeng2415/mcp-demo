@@ -129,10 +129,10 @@ npm-debug.log
 
 # 开发环境变量
 .env
-.env.local
 .env.development
 .env.test
 .env.production
+!.env.local
 
 # 调试文件
 *.pdb
