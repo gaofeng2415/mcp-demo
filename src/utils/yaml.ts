@@ -17,7 +17,8 @@ export const parseYaml = (yamlString: string): Record<string, any> => parse(yaml
  */
 export async function readFileToYaml(filePath = './local.yaml') {
   const __dirname = path.dirname(fileURLToPath(import.meta.url));
-  filePath = path.join(__dirname, '../..', filePath)
+  const mode = [...process.argv].find((arg) => arg.startsWith('--mode='))?.split('=')[1] ?? 'production';
+  filePath = path.join(__dirname, mode === 'development' ? '../..' : '../', filePath)
   const fileContent = await fs.readFile(filePath, 'utf-8');
   return parseYaml(fileContent)
 }
