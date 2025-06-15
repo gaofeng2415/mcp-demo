@@ -51,7 +51,8 @@ const tools = {
       const res = await getFigmaReq(fileId, nodeIds)
       console.log('figma res', res);
       // callback 返回必须是array
-      return toolReturnLoad([JSON.stringify(res)]) // { content: [{ type: 'text', text: JSON.stringify(res), }] }
+      return toolReturnLoad([JSON.stringify(res)])
+      // return { content: [{ type: 'text', text: JSON.stringify(res) }] }
     },
     parameters: {
       type: 'string',
@@ -78,7 +79,7 @@ const tools = {
       const res = parseUtils.parse(json)
       console.log('parse 的结果：', res.join(''));
       // callback 返回必须是array
-      return toolReturnLoad([res.join('')]) // { content: [{ type: 'text', text: res.join(''), }] }
+      return toolReturnLoad([res.join('')])
     },
     parameters: {
       type: 'string',

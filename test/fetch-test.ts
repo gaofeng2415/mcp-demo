@@ -18,7 +18,7 @@ import http from '../src/utils/agent-fetch.js';
 import ServerTools from '../src/server/utils/server-tools.js';
 const res = await http.post('', {
   messages:
-    '我有这么一个任务：通过figma文件数据生成html，文件id为GYGDEukMSmeZcWnKzxx2m8，节点id为3319-2。'
+    '我有这么一个任务：通过figma文件数据生成html，文件id为GYGDEukMSmeZcWnKzxx2m8，节点id为3319-4667。'
     + '现在我提供mcp server tools给你，具体可见tools。'
     + '请给我一个tools的调用结果，注意：你只需要返回工具调用的结果，不要返回任何其他内容。',
   tools: Object.values(ServerTools).filter(tool => tool.enable).map(tool => ({

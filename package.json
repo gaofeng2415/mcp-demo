@@ -11,9 +11,9 @@
     "start": "tsx src/index.ts -- model=qwen2.5-72b-instruct ui=figma",
     "server-start": "tsx src/server/server-demo.ts --mode=development",
     "start-build-server": "node dist/server-demo.js --mode=production",
-    "client-start": "tsx src/client/client-demo.ts",
+    "client-start": "tsx src/client/client-demo.ts --mode=development",
     "ai-test": "tsx test/deepseek.ts",
-    "api-fetch": "tsx test/fetch-test.ts",
+    "api-fetch": "tsx test/fetch-test.ts --mode=development",
     "parse-test": "tsx test/parse-test.ts",
     "client-dev": "vite --mode development"
   },

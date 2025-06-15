@@ -5,7 +5,7 @@ console.log('Client: Starting...')
 
 const transport = new StdioClientTransport({
   command: 'tsx',
-  args: ['src/server/server-demo.ts'],
+  args: ['src/server/server-demo.ts', '--mode=development'],
 });
 
 const client = new Client({
